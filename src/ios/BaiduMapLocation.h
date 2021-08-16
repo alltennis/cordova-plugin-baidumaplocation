@@ -1,3 +1,10 @@
+/* 
+ * @Date: 2021-08-16 13:37:42
+ * @LastEditTime: 2021-08-16 14:32:00
+ * @LastEditors: Please set LastEditors
+ * @Description: 升级百度地图2.0 SDK
+ * @FilePath: /cordova-plugin-baidumaplocation/src/ios/BaiduMapLocation.h
+ */
 //
 //  BaiduMapLocation.h
 //
@@ -15,6 +22,4 @@
 
 
 - (void)getCurrentPosition:(CDVInvokedUrlCommand*)command;
-- (void)BMKLocationManager:(BMKLocationManager *)manager didUpdateLocation:(BMKLocation *)userLocation orError:(NSError *)error;
-
 @end

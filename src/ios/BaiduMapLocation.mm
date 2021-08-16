@@ -1,7 +1,34 @@
+/*
+ * 
+ * 　　┏┓　　　┏┓+ +
+ * 　┏┛┻━━━┛┻┓ + +
+ * 　┃　　　　　　　┃ 　
+ * 　┃　　　━　　　┃ ++ + + +
+ *  ████━████ ┃+
+ * 　┃　　　　　　　┃ +
+ * 　┃　　　┻　　　┃
+ * 　┃　　　　　　　┃ + +
+ * 　┗━┓　　　┏━┛
+ * 　　　┃　　　┃　　　　　　　　　　　
+ * 　　　┃　　　┃ + + + +
+ * 　　　┃　　　┃
+ * 　　　┃　　　┃ +  神兽保佑
+ * 　　　┃　　　┃    代码无bug　　
+ * 　　　┃　　　┃　　+　　　　　　　　　
+ * 　　　┃　 　　┗━━━┓ + +
+ * 　　　┃ 　　　　　　　┣┓
+ * 　　　┃ 　　　　　　　┏┛
+ * 　　　┗┓┓┏━┳┓┏┛ + + + +
+ * 　　　　┃┫┫　┃┫┫
+ * 　　　　┗┻┛　┗┻┛+ + + +
+ * 
+ */
+
 //
 //  BaiduMapLocation.mm
 //
 //  Created by LiuRui on 2017/2/25.
+//  modify by ShawnSha on 2021/8/16
 //
 
 #import "BaiduMapLocation.h"
@@ -16,22 +43,32 @@
     
     [[BMKLocationAuth sharedInstance] checkPermisionWithKey:IOS_KEY authDelegate:nil];
     
-    
+    //初始化实例
     _localManager = [[BMKLocationManager alloc] init];
+    //设置delegate
     _localManager.delegate = self;
+    //设置返回位置的坐标系类型
+    _localManager.coordinateType = BMKLocationCoordinateTypeBMK09LL;
+    //设置距离过滤参数
+    _localManager.distanceFilter = kCLDistanceFilterNone;
+    //设置预期精度参数
+    _localManager.desiredAccuracy = kCLLocationAccuracyBest;
+    //设置应用位置类型
+    _localManager.activityType = CLActivityTypeAutomotiveNavigation;
+     //设置是否自动停止位置更新
+    _localManager.pausesLocationUpdatesAutomatically = NO;
+    //设置是否允许后台定位
+    _localManager.allowsBackgroundLocationUpdates = YES;
+     //设置位置获取超时时间
+    _localManager.locationTimeout = 10;
+    //设置获取地址信息超时时间
+    _localManager.reGeocodeTimeout = 10;
 }
 
 - (void)getCurrentPosition:(CDVInvokedUrlCommand*)command
-{
-    _execCommand = command;
-    [_localManager setLocatingWithReGeocode:YES];
-    [_localManager startUpdatingLocation];
-}
-
-- (void)BMKLocationManager:(BMKLocationManager * _Nonnull)manager didUpdateLocation:(BMKLocation * _Nullable)userLocation orError:(NSError * _Nullable)error
-{
-    if(_execCommand != nil)
-    {
+{ 
+    [_localManager requestLocationWithReGeocode:YES withNetworkState:YES completionBlock:^(BMKLocation * _Nullable location, BMKLocationNetworkState state, NSError * _Nullable error) {
+         //获取经纬度和该定位点对应的位置信息
         NSMutableDictionary* _data = [[NSMutableDictionary alloc] init];
         
         if(error){
@@ -86,7 +123,10 @@
         
         [_localManager stopUpdatingLocation];
         _execCommand = nil;
-    }
+    }];
+    // _execCommand = command;
+    // [_localManager setLocatingWithReGeocode:YES];
+    // [_localManager startUpdatingLocation];
 }
-
+ 
 @end
