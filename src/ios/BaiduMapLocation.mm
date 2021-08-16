@@ -48,7 +48,7 @@
     //设置delegate
     _localManager.delegate = self;
     //设置返回位置的坐标系类型
-    _localManager.coordinateType = BMKLocationCoordinateTypeBMK09LL;
+    // _localManager.coordinateType = BMKLocationCoordinateTypeGCJ02;
     //设置距离过滤参数
     _localManager.distanceFilter = kCLDistanceFilterNone;
     //设置预期精度参数
@@ -67,6 +67,12 @@
 
 - (void)getCurrentPosition:(CDVInvokedUrlCommand*)command
 { 
+    // 参数
+    // withReGeocode	是否带有逆地理信息(获取逆地理信息需要联网)
+    // withNetWorkState	是否带有移动热点识别状态(需要联网)
+    // completionBlock	单次定位完成后的Block
+    // 返回
+    // 是否成功添加单次定位Request
     [_localManager requestLocationWithReGeocode:YES withNetworkState:YES completionBlock:^(BMKLocation * _Nullable userLocation, BMKLocationNetworkState state, NSError * _Nullable error) {
          //获取经纬度和该定位点对应的位置信息
         NSMutableDictionary* _data = [[NSMutableDictionary alloc] init];
