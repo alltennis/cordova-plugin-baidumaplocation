@@ -67,7 +67,7 @@
 
 - (void)getCurrentPosition:(CDVInvokedUrlCommand*)command
 { 
-    [_localManager requestLocationWithReGeocode:YES withNetworkState:YES completionBlock:^(BMKLocation * _Nullable location, BMKLocationNetworkState state, NSError * _Nullable error) {
+    [_localManager requestLocationWithReGeocode:YES withNetworkState:YES completionBlock:^(BMKLocation * _Nullable userLocation, BMKLocationNetworkState state, NSError * _Nullable error) {
          //获取经纬度和该定位点对应的位置信息
         NSMutableDictionary* _data = [[NSMutableDictionary alloc] init];
         
@@ -127,6 +127,6 @@
     // _execCommand = command;
     // [_localManager setLocatingWithReGeocode:YES];
     // [_localManager startUpdatingLocation];
-}
- 
+} 
+
 @end
