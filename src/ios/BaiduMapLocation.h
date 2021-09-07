@@ -1,6 +1,6 @@
 /* 
  * @Date: 2021-08-16 13:37:42
- * @LastEditTime: 2021-08-16 18:28:52
+ * @LastEditTime: 2021-09-07 16:56:23
  * @LastEditors: Please set LastEditors
  * @Description: 升级百度地图2.0 SDK
  * @FilePath: /cordova-plugin-baidumaplocation/src/ios/BaiduMapLocation.h
