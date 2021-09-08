@@ -58,7 +58,7 @@
      //设置是否自动停止位置更新
     _localManager.pausesLocationUpdatesAutomatically = NO;
     //设置是否允许后台定位
-    _localManager.allowsBackgroundLocationUpdates = YES;
+    _localManager.allowsBackgroundLocationUpdates = NO;
      //设置位置获取超时时间
     _localManager.locationTimeout = 8;
     //设置获取地址信息超时时间
