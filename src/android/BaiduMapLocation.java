@@ -9,8 +9,8 @@ import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.Poi;
 import com.baidu.location.PoiRegion;
-import com.baidu.location.service.LocationService;
-import com.baidu.location.service.Utils;
+import com.aruistar.cordova.baidumap.service.LocationService;
+import com.aruistar.cordova.baidumap.service.Utils;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin; 

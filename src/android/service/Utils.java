@@ -1,4 +1,4 @@
-package com.baidu.location.service;
+package com.aruistar.cordova.baidumap.service;
 
 public class Utils {
 	public final static String CoorType_GCJ02 = "gcj02";
