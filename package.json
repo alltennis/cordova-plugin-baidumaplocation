@@ -1,9 +1,9 @@
 {
-  "name": "knxapp-plugin-baidumap",
+  "name": "cordova-plugin-baidumaplocation",
   "version": "4.0.3",
   "description": "Cordova Geolocation Plugin,use Baidu Map SDK",
   "cordova": {
-    "id": "knxapp-plugin-baidumap",
+    "id": "cordova-plugin-baidumaplocation",
     "platforms": [
       "android"
     ]
