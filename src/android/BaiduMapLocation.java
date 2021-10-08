@@ -10,7 +10,6 @@ import com.baidu.location.Poi;
 import com.baidu.location.PoiRegion;
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.LocationClient;
-import com.baidu.location.LocationClientOption;
 
 import com.aruistar.cordova.baidumap.service.LocationService;
 import com.aruistar.cordova.baidumap.service.Utils;
@@ -45,10 +44,6 @@ public class BaiduMapLocation extends CordovaPlugin {
    */
   public static CallbackContext cbCtx = null;
 
-  /**
-   * 百度定位客户端
-   */
-  public LocationClient mLocationClient = null;
 
   /*****
    *
@@ -125,7 +120,7 @@ public class BaiduMapLocation extends CordovaPlugin {
           for (int i = 0; i < location.getPoiList().size(); i++) {
             Poi poi = (Poi) location.getPoiList().get(i);
             sb.append("poiName:");
-            sb.append(poi.getName() + ", ");
+            sb.append(poi.getName() + ", "); 
             sb.append("poiTag:");
             sb.append(poi.getTags() + "\n");
           }
@@ -219,7 +214,7 @@ public class BaiduMapLocation extends CordovaPlugin {
         PluginResult pluginResult = new PluginResult(PluginResult.Status.ERROR, errMsg);
         cbCtx.sendPluginResult(pluginResult);
       } finally {
-        mLocationClient.stop();
+        locationService.stop();
       }
     }
 
@@ -303,13 +298,10 @@ public class BaiduMapLocation extends CordovaPlugin {
    * 权限获得完毕后进行定位
    */
   private void performGetLocation() {
-    if (mLocationClient == null) {
-      mLocationClient = new LocationClient(this.webView.getContext());
-      mLocationClient.registerLocationListener(myListener);
-      mLocationClient.setLocOption(locationService.getDefaultLocationClientOption());
+    if (locationService == null) {
+      locationService = new LocationService(this.webView,myListener);
     }
-
-    mLocationClient.start();
+    locationService.start();
   }
 
 
@@ -366,7 +358,9 @@ public class BaiduMapLocation extends CordovaPlugin {
     _permissionsToRequire = permissionsToRequire.toArray(_permissionsToRequire);
     cordova.requestPermissions(this, REQUEST_CODE, _permissionsToRequire);
   }
-  
+
+
+
   // /**
   //  * 插件主入口
   //  */
@@ -384,9 +378,6 @@ public class BaiduMapLocation extends CordovaPlugin {
     }
 
     return false;
-  }
-
-
-
+  } 
 
 }

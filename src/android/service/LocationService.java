@@ -26,11 +26,8 @@ public class LocationService {
    *
    * @param locationContext
    */
-  public LocationService(Context locationContext) {
+  public LocationService(CordovaWebView webView, BDAbstractLocationListener myListener){
 
-  }
-
-  public void initLocationClient(CordovaWebView webView,BDAbstractLocationListener myListener){
     objLock = new Object();
     synchronized (objLock) {
       if (client == null) {
