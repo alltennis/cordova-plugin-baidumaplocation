@@ -103,12 +103,12 @@
         <source-file src="src/android/service/LocationService.java" target-dir="src/com/aruistar/cordova/baidumap/service"/>
         <source-file src="src/android/service/Utils.java" target-dir="src/com/aruistar/cordova/baidumap/service"/>
         <!-- 百度地图libs -->
-        <source-file src="libs/android/arm64-v8a/liblocSDK8a.so" target-dir="libs/arm64-v8a"/>
-        <source-file src="libs/android/armeabi/liblocSDK8a.so" target-dir="libs/armeabi"/>
-        <source-file src="libs/android/armeabi-v7a/liblocSDK8a.so" target-dir="libs/armeabi-v7a"/>
-        <source-file src="libs/android/x86/liblocSDK8a.so" target-dir="libs/x86"/>
-        <source-file src="libs/android/x86_64/liblocSDK8a.so" target-dir="libs/x86_64"/>
-        <source-file src="libs/android/BaiduLBS_Android.jar" target-dir="libs/"/>
+        <source-file src="libs/android/arm64-v8a/liblocSDK8a.so" target-dir="app/libs/arm64-v8a"/>
+        <source-file src="libs/android/armeabi/liblocSDK8a.so" target-dir="app/libs/armeabi"/>
+        <source-file src="libs/android/armeabi-v7a/liblocSDK8a.so" target-dir="app/libs/armeabi-v7a"/>
+        <source-file src="libs/android/x86/liblocSDK8a.so" target-dir="app/libs/x86"/>
+        <source-file src="libs/android/x86_64/liblocSDK8a.so" target-dir="app/libs/x86_64"/>
+        <source-file src="libs/android/BaiduLBS_Android.jar" target-dir="app/libs/"/>
     </platform>
 
     <!--ios-->
