@@ -97,18 +97,18 @@
             <meta-data android:name="com.baidu.lbsapi.API_KEY" android:value="$ANDROID_KEY"/> 
         </config-file>
         
-         <framework src="src/android/BaiduMapLocation.gradle" custom="true" type="gradleReference"/>
+         <!-- <framework src="src/android/BaiduMapLocation.gradle" custom="true" type="gradleReference"/> -->
         <!-- 百度插件文件-->
         <source-file src="src/android/BaiduMapLocation.java" target-dir="src/com/aruistar/cordova/baidumap"/>
         <source-file src="src/android/service/LocationService.java" target-dir="src/com/aruistar/cordova/baidumap/service"/>
         <source-file src="src/android/service/Utils.java" target-dir="src/com/aruistar/cordova/baidumap/service"/>
         <!-- 百度地图libs -->
-        <source-file src="libs/android/arm64-v8a/liblocSDK8a.so" target-dir="app/libs/arm64-v8a"/>
-        <source-file src="libs/android/armeabi/liblocSDK8a.so" target-dir="app/libs/armeabi"/>
-        <source-file src="libs/android/armeabi-v7a/liblocSDK8a.so" target-dir="app/libs/armeabi-v7a"/>
-        <source-file src="libs/android/x86/liblocSDK8a.so" target-dir="app/libs/x86"/>
-        <source-file src="libs/android/x86_64/liblocSDK8a.so" target-dir="app/libs/x86_64"/>
-        <source-file src="libs/android/BaiduLBS_Android.jar" target-dir="app/libs/"/>
+        <source-file src="libs/android/arm64-v8a/liblocSDK8a.so" target-dir="jniLibs/arm64-v8a"/>
+        <source-file src="libs/android/armeabi/liblocSDK8a.so" target-dir="jniLibs/armeabi"/>
+        <source-file src="libs/android/armeabi-v7a/liblocSDK8a.so" target-dir="jniLibs/armeabi-v7a"/>
+        <source-file src="libs/android/x86/liblocSDK8a.so" target-dir="jniLibs/x86"/>
+        <source-file src="libs/android/x86_64/liblocSDK8a.so" target-dir="jniLibs/x86_64"/>
+        <source-file src="libs/android/BaiduLBS_Android.jar" target-dir="libs/"/>
     </platform>
 
     <!--ios-->
