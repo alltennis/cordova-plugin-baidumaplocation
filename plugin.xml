@@ -90,11 +90,8 @@
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <!-- 在application标签中声明service组件,每个app拥有自己单独的定位service -->
             <!-- 声明service组件 -->
-            <service
-                    android:name="com.baidu.location.f"
-                    android:enabled="true"
-            android:process=":remote"/>
-            <meta-data android:name="com.baidu.lbsapi.API_KEY" android:value="$ANDROID_KEY"/> 
+            <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"/>
+            <!-- <meta-data android:name="com.baidu.lbsapi.API_KEY" android:value=""/> -->
         </config-file>
         
          <!-- <framework src="src/android/BaiduMapLocation.gradle" custom="true" type="gradleReference"/> -->
