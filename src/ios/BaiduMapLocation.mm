@@ -38,13 +38,20 @@
 
 - (void)pluginInitialize
 {
+    // 要使用百度地图，请先启动BaiduMapManager
+    _localManager = [[BMKLocationManager alloc] init];
     NSDictionary *plistDic = [[NSBundle mainBundle] infoDictionary];
     NSString* IOS_KEY = [[plistDic objectForKey:@"BaiduMapLocation"] objectForKey:@"IOS_KEY"];
     
-    [[BMKLocationAuth sharedInstance] checkPermisionWithKey:IOS_KEY authDelegate:nil];
-    
-    //初始化实例
-    _localManager = [[BMKLocationManager alloc] init];
+ 
+    [[BMKLocationAuth sharedInstance] checkPermisionWithKey:IOS_KEY authDelegate:self];
+    BOOL ret = [_mapManager start:IOS_KEY generalDelegate:self];
+	if (!ret) {
+		NSLog(@"manager start failed!");
+	}
+    //同意隐私合格政策
+    [[BMKLocationAuth sharedInstance] setAgreePrivacy:YES];
+   
     //设置delegate
     _localManager.delegate = self;
     //设置返回位置的坐标系类型
@@ -58,7 +65,7 @@
      //设置是否自动停止位置更新
     _localManager.pausesLocationUpdatesAutomatically = NO;
     //设置是否允许后台定位
-    _localManager.allowsBackgroundLocationUpdates = NO;
+    _localManager.allowsBackgroundLocationUpdates = YES;
      //设置位置获取超时时间
     _localManager.locationTimeout = 8;
     //设置获取地址信息超时时间
@@ -75,7 +82,7 @@
         // completionBlock    单次定位完成后的Block
         // 返回
         // 是否成功添加单次定位Request
-        [_localManager requestLocationWithReGeocode:NO withNetworkState:NO completionBlock:^(BMKLocation * _Nullable userLocation, BMKLocationNetworkState state, NSError * _Nullable error) {
+        [_localManager requestLocationWithReGeocode:YES withNetworkState:NO completionBlock:^(BMKLocation * _Nullable userLocation, BMKLocationNetworkState state, NSError * _Nullable error) {
              //获取经纬度和该定位点对应的位置信息
             NSMutableDictionary* _data = [[NSMutableDictionary alloc] init];
             

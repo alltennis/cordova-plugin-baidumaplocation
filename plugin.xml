@@ -155,6 +155,7 @@
 
         <framework src="CoreLocation.framework"/>
         <framework src="SystemConfiguration.framework"/>
+        <framework src="Security.framework"/>
         <framework src="libsqlite3.0.tbd"/>
         <framework src="CoreTelephony.framework"/>
 		<framework src="libc++.tbd"/>

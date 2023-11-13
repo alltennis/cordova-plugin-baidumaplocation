@@ -1,6 +1,18 @@
-# 百度地图定位 Cordova 插件，支持 Android，IOS，ionic 1x 2x 均可使用
+<!--
+ * @Date: 2021-08-17 11:49:01
+ * @LastEditTime: 2021-08-17 21:10:52
+ * @FilePath: /vx-app-baidumap/README.md
+-->
+# 百度地图定位Cordova插件，支持Android，IOS 均可使用
+感谢: 本插主要参考 [cordova-qdc-baidu-location](https://github.com/liangzhenghui/cordova-qdc-baidu-location)
+
+```
+cordova-plugin-baidumaplocation 太久没更新，自己更新下.
+```
 
 ### UPDATE:
+ * ios 百度地图sdk更新到2.0.9
 
-v4.0.5 更新 android 地图版本到 V9
-V4.0.4 更新到百度地图 2.0.IOS 需开启后台定位 target=>sigging&Co..=>background modes 勾选 location update
+    ios 一定要在 Background Method 里开启 location update
+
+ * android 百度地图sdk更新到支持android 12
