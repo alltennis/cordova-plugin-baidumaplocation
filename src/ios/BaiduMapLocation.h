@@ -13,7 +13,8 @@
 
 #import <Cordova/CDV.h>
 
-#import <BMKLocationKit/BMKLocationComponent.h>
+#import <BMKLocationkit/BMKLocationComponent.h>
+#import <BMKLocationkit/BMKLocationAuth.h>
 
 @interface BaiduMapLocation : CDVPlugin<BMKLocationManagerDelegate> {
     BMKLocationManager* _localManager;

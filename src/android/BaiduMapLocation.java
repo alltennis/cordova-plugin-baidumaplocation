@@ -1,4 +1,4 @@
-package com.aruistar.cordova.baidumap;
+package com.jsha.cordova.baidumap;
 
 
 import android.Manifest;
@@ -11,8 +11,8 @@ import com.baidu.location.PoiRegion;
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.LocationClient;
 
-import com.aruistar.cordova.baidumap.service.LocationService;
-import com.aruistar.cordova.baidumap.service.Utils;
+import com.jsha.cordova.baidumap.service.LocationService;
+import com.jsha.cordova.baidumap.service.Utils;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;

@@ -11,8 +11,9 @@ cordova-plugin-baidumaplocation 太久没更新，自己更新下.
 ```
 
 ### UPDATE:
- * ios 百度地图sdk更新到2.0.9
+ * ios 百度地图sdk更新到 `2.0.9`
 
-    ios 一定要在 Background Method 里开启 location update
+   一定要在 Background Method 里开启 location update
 
- * android 百度地图sdk更新到支持android 12
+ * android 百度地图sdk更新 `7.5.9`
+   一只集成`全量定位`与`检索`sdk
