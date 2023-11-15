@@ -38,36 +38,33 @@
 
 - (void)pluginInitialize
 {
-    
     NSDictionary *plistDic = [[NSBundle mainBundle] infoDictionary];
     NSString* IOS_KEY = [[plistDic objectForKey:@"BaiduMapLocation"] objectForKey:@"IOS_KEY"];
-    
-    //同意隐私合格政策
-    [[BMKLocationAuth sharedInstance] setAgreePrivacy:YES];
-    
-    // 要使用百度地图，请先启动BaiduMapManager
-    _localManager = [[BMKLocationManager alloc] init];
-      
+
+    // 注册
     [[BMKLocationAuth sharedInstance] checkPermisionWithKey:IOS_KEY authDelegate:nil];
-      
+     //同意隐私合格政策
+    [[BMKLocationAuth sharedInstance] setAgreePrivacy:YES];
+    // 要使用百度地图，请先启动BaiduMapManager
+    _mapManager = [[BMKLocationManager alloc] init];
     //设置delegate
-    _localManager.delegate = self;
+    _mapManager.delegate = self;
     //设置返回位置的坐标系类型
-    _localManager.coordinateType = BMKLocationCoordinateTypeBMK09LL;
+    _mapManager.coordinateType = BMKLocationCoordinateTypeBMK09LL;
     //设置距离过滤参数
-    _localManager.distanceFilter = kCLDistanceFilterNone;
+    _mapManager.distanceFilter = kCLDistanceFilterNone;
     //设置预期精度参数
-    _localManager.desiredAccuracy = kCLLocationAccuracyBest;
+    _mapManager.desiredAccuracy = kCLLocationAccuracyBest;
     //设置应用位置类型
-    _localManager.activityType = CLActivityTypeAutomotiveNavigation;
+    _mapManager.activityType = CLActivityTypeAutomotiveNavigation;
      //设置是否自动停止位置更新
-    _localManager.pausesLocationUpdatesAutomatically = NO;
+    _mapManager.pausesLocationUpdatesAutomatically = NO;
     //设置是否允许后台定位
-    _localManager.allowsBackgroundLocationUpdates = YES;
+    _mapManager.allowsBackgroundLocationUpdates = YES;
      //设置位置获取超时时间
-    _localManager.locationTimeout = 8;
+    _mapManager.locationTimeout = 8;
     //设置获取地址信息超时时间
-    _localManager.reGeocodeTimeout = 8;
+    _mapManager.reGeocodeTimeout = 8;
 }
 
 - (void)BMKLocationManager:(BMKLocationManager * _Nonnull)manager didUpdateLocation:(BMKLocation * _Nullable)userLocation orError:(NSError * _Nullable)error
@@ -96,11 +93,12 @@
 //                }
 //
 //            }
-
-                 //获取经纬度和该定位点对应的位置信息
+    
+    
+    //获取经纬度和该定位点对应的位置信息
     NSMutableDictionary* _data = [[NSMutableDictionary alloc] init];
-
     if(error){
+        _errorLocnum++;
         NSLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
         NSNumber* errorCode = [NSNumber numberWithInteger: error.code];
         NSString* errorDesc = error.localizedDescription;
@@ -144,27 +142,34 @@
             [_data setValue:locTypeDescription forKey:@"locTypeDescription"];
         }
     }
+
     [self execCallbakCommond:_data];
+
+}
+
+-(void)startLocUpdate{
+    [self->_mapManager stopUpdatingLocation];
+    [self.commandDelegate runInBackground:^{
+        //如果需要持续定位返回地址信息（需要联网），请设置如下：
+        [self->_mapManager setLocatingWithReGeocode:NO];
+        [self->_mapManager startUpdatingLocation];
+    }];
 }
 
 - (void)getCurrentPosition:(CDVInvokedUrlCommand*)command
 {
     _execCommand = command;
-    locnum =0;
-    //如果需要持续定位返回地址信息（需要联网），请设置如下：
-    //    [_localManager setLocatingWithReGeocode:NO];
-    [_localManager startUpdatingLocation];
+    _errorLocnum = 0;
+    [self startLocUpdate];
 }
 
 -(void)execCallbakCommond:(NSMutableDictionary *)_data
 {
- 
-    [_localManager stopUpdatingLocation];
+    [_mapManager stopUpdatingLocation];
     CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:_data];
     [result setKeepCallbackAsBool:TRUE];
     [self.commandDelegate sendPluginResult:result callbackId:_execCommand.callbackId];
-     _execCommand = nil;
-   
+    _execCommand = nil;
 }
 
 
