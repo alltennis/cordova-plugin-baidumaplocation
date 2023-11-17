@@ -35,16 +35,18 @@
 
 @implementation BaiduMapLocation
 
-
-- (void)pluginInitialize
-{
++ (void)load{
     NSDictionary *plistDic = [[NSBundle mainBundle] infoDictionary];
     NSString* IOS_KEY = [[plistDic objectForKey:@"BaiduMapLocation"] objectForKey:@"IOS_KEY"];
 
     // 注册
     [[BMKLocationAuth sharedInstance] checkPermisionWithKey:IOS_KEY authDelegate:nil];
-     //同意隐私合格政策
+    //同意隐私合格政策
     [[BMKLocationAuth sharedInstance] setAgreePrivacy:YES];
+}
+
+- (void)pluginInitialize
+{
     // 要使用百度地图，请先启动BaiduMapManager
     _mapManager = [[BMKLocationManager alloc] init];
     //设置delegate
