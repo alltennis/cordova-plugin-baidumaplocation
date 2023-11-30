@@ -17,11 +17,10 @@
 #import <BMKLocationkit/BMKLocationAuth.h>
 
 @interface BaiduMapLocation : CDVPlugin<BMKLocationManagerDelegate> {
-    BMKLocationManager* _mapManager;
     CDVInvokedUrlCommand* _execCommand;
 }
 @property(nonatomic, assign) int errorLocnum;
-
+@property(nonatomic, strong) BMKLocationManager *mapManager;
 
 - (void)getCurrentPosition:(CDVInvokedUrlCommand*)command;
 @end
