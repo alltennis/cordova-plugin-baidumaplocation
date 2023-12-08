@@ -1,4 +1,4 @@
-package com.aruistar.cordova.baidumap.service;
+package com.jsha.cordova.baidumap.service;
 
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.LocationClient;
@@ -31,6 +31,7 @@ public class LocationService {
     objLock = new Object();
     synchronized (objLock) {
       if (client == null) {
+        LocationClient.setAgreePrivacy(true);
         client =  new LocationClient(webView.getContext());
         client.registerLocationListener(myListener);
         client.setLocOption(getDefaultLocationClientOption());

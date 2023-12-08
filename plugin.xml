@@ -21,7 +21,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
         id="cordova-plugin-baidumaplocation"
-        version="4.0.5">
+        version="4.0.6">
     <name>BadiduMap Location</name>
     <description>Cordova Geolocation Plugin,use Baidu Map SDK</description>
     <license>Apache 2.0</license>
@@ -48,7 +48,7 @@
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="BaiduMapLocation">
-                <param name="android-package" value="com.aruistar.cordova.baidumap.BaiduMapLocation"/>
+                <param name="android-package" value="com.jsha.cordova.baidumap.BaiduMapLocation"/>
             </feature>
         </config-file>
 
@@ -96,18 +96,38 @@
             android:process=":remote"/>
             <meta-data android:name="com.baidu.lbsapi.API_KEY" android:value="$ANDROID_KEY"/> 
         </config-file>
-        
-         <framework src="src/android/BaiduMapLocation.gradle" custom="true" type="gradleReference"/>
+
+        <framework src="src/android/BaiduMapLocation.gradle" custom="true" type="gradleReference"/>
         <!-- 百度插件文件-->
-        <source-file src="src/android/BaiduMapLocation.java" target-dir="src/com/aruistar/cordova/baidumap"/>
-        <source-file src="src/android/service/LocationService.java" target-dir="src/com/aruistar/cordova/baidumap/service"/>
-        <source-file src="src/android/service/Utils.java" target-dir="src/com/aruistar/cordova/baidumap/service"/>
+        <source-file src="src/android/BaiduMapLocation.java" target-dir="src/com/jsha/cordova/baidumap"/>
+        <source-file src="src/android/service/LocationService.java" target-dir="src/com/jsha/cordova/baidumap/service"/>
+        <source-file src="src/android/service/Utils.java" target-dir="src/com/jsha/cordova/baidumap/service"/>
         <!-- 百度地图libs -->
-        <source-file src="libs/android/arm64-v8a/liblocSDK8a.so" target-dir="app/libs/arm64-v8a"/>
-        <source-file src="libs/android/armeabi/liblocSDK8a.so" target-dir="app/libs/armeabi"/>
-        <source-file src="libs/android/armeabi-v7a/liblocSDK8a.so" target-dir="app/libs/armeabi-v7a"/>
-        <source-file src="libs/android/x86/liblocSDK8a.so" target-dir="app/libs/x86"/>
-        <source-file src="libs/android/x86_64/liblocSDK8a.so" target-dir="app/libs/x86_64"/>
+        <!-- arm64-v8a -->
+        <source-file src="libs/android/arm64-v8a/libBaiduMapSDK_base_v7_5_9.so" target-dir="app/libs/arm64-v8a"/>
+        <source-file src="libs/android/arm64-v8a/libc++_shared.so" target-dir="app/libs/arm64-v8a"/>
+        <source-file src="libs/android/arm64-v8a/libindoor.so" target-dir="app/libs/arm64-v8a"/>
+        <source-file src="libs/android/arm64-v8a/liblocSDK8b.so" target-dir="app/libs/arm64-v8a"/>
+        <source-file src="libs/android/arm64-v8a/libtiny_magic.so" target-dir="app/libs/arm64-v8a"/>
+        <!-- armeabi-v7a -->
+        <source-file src="libs/android/armeabi-v7a/libBaiduMapSDK_base_v7_5_9.so" target-dir="app/libs/armeabi-v7a"/>
+        <source-file src="libs/android/armeabi-v7a/libc++_shared.so" target-dir="app/libs/armeabi-v7a"/>
+        <source-file src="libs/android/armeabi-v7a/libindoor.so" target-dir="app/libs/armeabi-v7a"/>
+        <source-file src="libs/android/armeabi-v7a/liblocSDK8b.so" target-dir="app/libs/armeabi-v7a"/>
+        <source-file src="libs/android/armeabi-v7a/libtiny_magic.so" target-dir="app/libs/armeabi-v7a"/> 
+        <!-- x86 -->
+        <source-file src="libs/android/libs/android/x86/libBaiduMapSDK_base_v7_5_9.so" target-dir="app/libs/x86"/>
+        <source-file src="libs/android/x86/libc++_shared.so" target-dir="app/libs/x86"/>
+        <source-file src="libs/android/x86/libindoor.so" target-dir="app/libs/x86"/>
+        <source-file src="libs/android/x86/liblocSDK8b.so" target-dir="app/libs/x86"/>
+        <source-file src="libs/android/x86/libtiny_magic.so" target-dir="app/libs/x86"/>
+        <!-- x86_64 -->
+        <source-file src="libs/android/x86_64/libBaiduMapSDK_base_v7_5_9.so" target-dir="app/libs/x86_64"/>
+        <source-file src="libs/android/x86_64/libc++_shared.so" target-dir="app/libs/x86_64"/>
+        <source-file src="libs/android/x86_64/libindoor.so" target-dir="app/libs/x86_64"/>
+        <source-file src="libs/android/x86_64/liblocSDK8b.so" target-dir="app/libs/x86_64"/>
+        <source-file src="libs/android/x86_64/libtiny_magic.so" target-dir="app/libs/x86_64"/> 
+        <!-- BaiduLBS_Android.jar -->
         <source-file src="libs/android/BaiduLBS_Android.jar" target-dir="app/libs/"/>
     </platform>
 
@@ -155,6 +175,7 @@
 
         <framework src="CoreLocation.framework"/>
         <framework src="SystemConfiguration.framework"/>
+        <framework src="Security.framework"/>
         <framework src="libsqlite3.0.tbd"/>
         <framework src="CoreTelephony.framework"/>
 		<framework src="libc++.tbd"/>
