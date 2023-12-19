@@ -116,7 +116,7 @@
         <source-file src="libs/android/armeabi-v7a/liblocSDK8b.so" target-dir="app/libs/armeabi-v7a"/>
         <source-file src="libs/android/armeabi-v7a/libtiny_magic.so" target-dir="app/libs/armeabi-v7a"/> 
         <!-- x86 -->
-        <source-file src="libs/android/libs/android/x86/libBaiduMapSDK_base_v7_5_9.so" target-dir="app/libs/x86"/>
+        <source-file src="libs/android/x86/libBaiduMapSDK_base_v7_5_9.so" target-dir="app/libs/x86"/>
         <source-file src="libs/android/x86/libc++_shared.so" target-dir="app/libs/x86"/>
         <source-file src="libs/android/x86/libindoor.so" target-dir="app/libs/x86"/>
         <source-file src="libs/android/x86/liblocSDK8b.so" target-dir="app/libs/x86"/>
