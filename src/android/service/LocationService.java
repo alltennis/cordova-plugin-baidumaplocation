@@ -32,9 +32,13 @@ public class LocationService {
     synchronized (objLock) {
       if (client == null) {
         LocationClient.setAgreePrivacy(true);
-        client =  new LocationClient(webView.getContext());
-        client.registerLocationListener(myListener);
-        client.setLocOption(getDefaultLocationClientOption());
+	try {
+          client =  new LocationClient(webView.getContext());
+          client.registerLocationListener(myListener);
+          client.setLocOption(getDefaultLocationClientOption());
+	} catch (JSONException e) {
+            Log.e("Cordova.Plugin.location", e.getMessage());
+        }
       }
     }
   }
