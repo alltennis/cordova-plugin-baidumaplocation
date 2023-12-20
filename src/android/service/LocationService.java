@@ -36,7 +36,7 @@ public class LocationService {
           client =  new LocationClient(webView.getContext());
           client.registerLocationListener(myListener);
           client.setLocOption(getDefaultLocationClientOption());
-	} catch (JSONException e) {
+	} catch (Exception e) {
             Log.e("Cordova.Plugin.location", e.getMessage());
         }
       }
