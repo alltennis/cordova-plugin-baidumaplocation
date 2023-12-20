@@ -7,6 +7,7 @@ import com.baidu.location.LocationClientOption.LocationMode;
 
 import android.content.Context;
 import android.webkit.WebView;
+import android.util.Log;
 
 import org.apache.cordova.CordovaWebView;
 
