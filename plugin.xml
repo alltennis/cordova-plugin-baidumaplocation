@@ -106,13 +106,13 @@
         <!-- arm64-v8a -->
         <source-file src="libs/android/arm64-v8a/libBaiduMapSDK_base_v7_5_9.so" target-dir="app/libs/arm64-v8a"/>
         <source-file src="libs/android/arm64-v8a/libc++_shared.so" target-dir="app/libs/arm64-v8a"/>
-		    <!--<source-file src="libs/android/arm64-v8a/libindoor.so" target-dir="app/libs/arm64-v8a"/>-->
+	<source-file src="libs/android/arm64-v8a/libindoor.so" target-dir="app/libs/arm64-v8a"/>
         <source-file src="libs/android/arm64-v8a/liblocSDK8b.so" target-dir="app/libs/arm64-v8a"/>
         <source-file src="libs/android/arm64-v8a/libtiny_magic.so" target-dir="app/libs/arm64-v8a"/>
         <!-- armeabi-v7a -->
         <source-file src="libs/android/armeabi-v7a/libBaiduMapSDK_base_v7_5_9.so" target-dir="app/libs/armeabi-v7a"/>
         <source-file src="libs/android/armeabi-v7a/libc++_shared.so" target-dir="app/libs/armeabi-v7a"/>
-	<!--<source-file src="libs/android/armeabi-v7a/libindoor.so" target-dir="app/libs/armeabi-v7a"/>-->
+	<source-file src="libs/android/armeabi-v7a/libindoor.so" target-dir="app/libs/armeabi-v7a"/>
         <source-file src="libs/android/armeabi-v7a/liblocSDK8b.so" target-dir="app/libs/armeabi-v7a"/>
         <source-file src="libs/android/armeabi-v7a/libtiny_magic.so" target-dir="app/libs/armeabi-v7a"/> 
         <!-- x86 -->
@@ -124,7 +124,7 @@
         <!-- x86_64 -->
         <source-file src="libs/android/x86_64/libBaiduMapSDK_base_v7_5_9.so" target-dir="app/libs/x86_64"/>
         <source-file src="libs/android/x86_64/libc++_shared.so" target-dir="app/libs/x86_64"/>
-	<!--<source-file src="libs/android/x86_64/libindoor.so" target-dir="app/libs/x86_64"/>-->
+		<!--<source-file src="libs/android/x86_64/libindoor.so" target-dir="app/libs/x86_64"/>-->
         <source-file src="libs/android/x86_64/liblocSDK8b.so" target-dir="app/libs/x86_64"/>
         <source-file src="libs/android/x86_64/libtiny_magic.so" target-dir="app/libs/x86_64"/> 
         <!-- BaiduLBS_Android.jar -->
