@@ -82,7 +82,7 @@
             <!-- 用于读取手机当前的状态 -->
             <uses-permission android:name="android.permission.READ_PHONE_STATE" />
             <!-- 读取缓存数据 -->
-	    	    <!--<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />-->
+	    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32"/>
             <!-- 获取模拟定位信息 调试开启 -->
             	    <!-- <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/>  -->
         </config-file>
